@@ -50,6 +50,16 @@ jobs:
       - name: 'Test'
         shell: bash
         run: ./mvnw -B -P!standard-with-extra-repos verify -U -Dmaven.javadoc.skip=true -f $ROOT_POM
+      - name: Generate JaCoCo Badge
+        uses: cicirello/jacoco-badge-generator@v2
+        with:
+          generate-branches-badge: true
+      - name: Commit and push the badge (if it changed)
+        uses: EndBug/add-and-commit@v9
+        with:
+          default_author: github_actions
+          message: 'commit badge'
+          add: '*.svg'
       - name: 'Print Surefire reports'
         # Note: Normally a step won't run if the job has failed, but this causes it to
         if: ${{ failure() }}
