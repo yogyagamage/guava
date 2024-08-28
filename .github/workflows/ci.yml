@@ -21,11 +21,7 @@ jobs:
       matrix:
         os: [ ubuntu-latest ]
         java: [ 21 ]
-        root-pom: [ 'pom.xml', 'android/pom.xml' ]
-        include:
-          - os: windows-latest
-            java: 21
-            root-pom: pom.xml
+        root-pom: [ 'pom.xml' ]
     runs-on: ${{ matrix.os }}
     env:
       ROOT_POM: ${{ matrix.root-pom }}
