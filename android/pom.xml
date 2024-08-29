@@ -397,7 +397,7 @@
             <runOrder>alphabetical</runOrder>
             <!-- Set max heap for tests. -->
             <!-- Catch dependencies on the default locale by setting it to hi-IN. -->
-            <argLine>${argLine} ${jacocoArgLine} ${test.add.args} ${test.add.opens}</argLine>
+            <argLine>${jacocoArgLine} ${argLine} ${test.add.args} ${test.add.opens}</argLine>
           </configuration>
         </plugin>
         <plugin>

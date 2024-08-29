@@ -37,7 +37,6 @@
     <otherVariant.version>HEAD-android-SNAPSHOT</otherVariant.version>
     <otherVariant.jvmEnvironment>android</otherVariant.jvmEnvironment>
     <otherVariant.jvmEnvironmentVariantName>android</otherVariant.jvmEnvironmentVariantName>
-    <argLine>-Xmx1536M -Duser.language=hi -Duser.country=IN</argLine>
   </properties>
   <issueManagement>
     <system>GitHub Issues</system>
@@ -396,7 +395,7 @@
             <runOrder>alphabetical</runOrder>
             <!-- Set max heap for tests. -->
             <!-- Catch dependencies on the default locale by setting it to hi-IN. -->
-            <argLine>${argLine} ${test.add.args} ${test.add.opens} ${jacocoArgLine}</argLine>
+            <argLine>${jacocoArgLine} -Xmx1536M -Duser.language=hi -Duser.country=IN ${test.add.args} ${test.add.opens}</argLine>
           </configuration>
         </plugin>
         <plugin>
