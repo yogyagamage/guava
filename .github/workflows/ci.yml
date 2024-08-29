@@ -57,6 +57,16 @@ jobs:
           default_author: github_actions
           message: 'commit badge'
           add: '*.svg'
+      - name: Upload JaCoCo testlib Report as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: jacoco-report
+          path: guava-testlib/target/site/jacoco/jacoco.csv
+      - name: Upload JaCoCo tests Report as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: jacoco-report
+          path: guava-tests/target/site/jacoco/jacoco.csv
       - name: 'Print Surefire reports'
         # Note: Normally a step won't run if the job has failed, but this causes it to
         if: ${{ failure() }}
