@@ -45,7 +45,7 @@ jobs:
         run: ./mvnw -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn install -U -DskipTests=true -f $ROOT_POM
       - name: 'Test'
         shell: bash
-        run: ./mvnw -B -P!standard-with-extra-repos verify -U -f $ROOT_POM
+        run: ./mvnw -B verify -U -f
       - name: Generate JaCoCo Badge
         uses: cicirello/jacoco-badge-generator@v2
         with:

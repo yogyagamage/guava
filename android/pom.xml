@@ -37,6 +37,8 @@
     <otherVariant.version>HEAD-jre-SNAPSHOT</otherVariant.version>
     <otherVariant.jvmEnvironment>standard-jvm</otherVariant.jvmEnvironment>
     <otherVariant.jvmEnvironmentVariantName>jre</otherVariant.jvmEnvironmentVariantName>
+    <argLine>-Xmx1536M -Duser.language=hi -Duser.country=IN</argLine>
+
   </properties>
   <issueManagement>
     <system>GitHub Issues</system>
@@ -111,6 +113,10 @@
             <goals>
               <goal>prepare-agent</goal>
             </goals>
+            <configuration>
+							<append>true</append>
+              <propertyName>jacocoArgLine</propertyName>
+            </configuration>
           </execution>
           <execution>
             <id>report</id>
@@ -391,7 +397,7 @@
             <runOrder>alphabetical</runOrder>
             <!-- Set max heap for tests. -->
             <!-- Catch dependencies on the default locale by setting it to hi-IN. -->
-            <argLine>-Xmx1536M -Duser.language=hi -Duser.country=IN ${test.add.args} ${test.add.opens}</argLine>
+            <argLine>${argLine} ${jacocoArgLine} ${test.add.args} ${test.add.opens}</argLine>
           </configuration>
         </plugin>
         <plugin>
