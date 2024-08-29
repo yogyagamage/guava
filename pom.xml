@@ -115,6 +115,7 @@
               <goal>prepare-agent</goal>
             </goals>
             <configuration>
+							<append>true</append>
               <propertyName>jacocoArgLine</propertyName>
             </configuration>
           </execution>
