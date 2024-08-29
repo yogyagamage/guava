@@ -114,15 +114,9 @@
               <goal>prepare-agent</goal>
             </goals>
             <configuration>
-							<append>true</append>
+              <append>true</append>
               <propertyName>jacocoArgLine</propertyName>
             </configuration>
-          </execution>
-          <execution>
-            <id>report</id>
-            <goals>
-              <goal>report</goal>
-            </goals>
           </execution>
         </executions>
       </plugin>
