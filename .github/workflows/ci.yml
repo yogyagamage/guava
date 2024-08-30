@@ -43,11 +43,14 @@ jobs:
       - name: 'Install'
         shell: bash
         run: ./mvnw -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn install -U -DskipTests=true -f $ROOT_POM
-      - name: 'Test'
+      - name: 'Test run'
         shell: bash
         run: > 
           mvn clean install -DrunTestWithJacoco
-          mvn validate -DcreateJacocoReport 
+      - name: 'Test report'
+        shell: bash
+        run: >
+          mvn validate -DcreateJacocoReport
       - name: Upload JaCoCo testlib Report as Artifact
         uses: actions/upload-artifact@v3
         with:
