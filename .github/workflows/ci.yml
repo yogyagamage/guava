@@ -45,22 +45,15 @@ jobs:
         run: ./mvnw -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn install -U -DskipTests=true -f $ROOT_POM
       - name: 'Test'
         shell: bash
-        run: mvn -B verify 
+        run: > 
+          mvn clean install -DrunTestWithJacoco
+          mvn validate -DcreateJacocoReport 
       - name: Upload JaCoCo testlib Report as Artifact
         uses: actions/upload-artifact@v3
         with:
           name: jacoco-report-1
           path: guava-testlib/target/site/jacoco/jacoco.csv
-      - name: Upload JaCoCo tests Report as Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: jacoco-report-2
-          path: guava-tests/target/site/jacoco/jacoco.csv
-      - name: Upload JaCoCo tests Report as Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: jacoco-report-3
-          path: 'guava-jacoco/target/site/jacoco-aggregate/jacoco.csv'
+      
       - name: 'Print Surefire reports'
         # Note: Normally a step won't run if the job has failed, but this causes it to
         if: ${{ failure() }}
