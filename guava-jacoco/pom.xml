@@ -40,6 +40,16 @@
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.12</version>
                 <executions>
+                <execution>
+                    <id>prepare-agent</id>
+                    <goals>
+                        <goal>prepare-agent</goal>
+                    </goals>
+                    <configuration>
+                        <append>true</append>
+                        <propertyName>jacocoArgLine</propertyName>
+                    </configuration>
+                </execution>
                     <execution>
                         <id>report-agg</id>
                         <goals>
@@ -50,10 +60,5 @@
             </plugin>
         </plugins>
     </build>
-     <properties>
-        <maven.compiler.source>18</maven.compiler.source>
-        <maven.compiler.target>18</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 
 </project>
